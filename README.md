@@ -1,28 +1,43 @@
-wechange
-=========================
+![ecobasa logo](http://cloud.ecobasa.org/public.php?service=files&t=976069b03a5d7f4153c5cfc16e7ab309&download)
 
-This is the base project for wechange. It is mainly a configurable shell for the actual wechange apps, which are pluggable components. Most of the actual code resides in "cosinnus-core". See `requirements_staging.txt` for a full list of internal apps.
+Repository of the future http://ecobasa.org
+
+# Requisites
+* Django (Python)
+* PostgreSQL
+* LESS (use node.js Grunt or Compass to compile CSS)
+
+
+This is the base project for ecobasa. 
+We are working with https://wechange.de
+
+The ecobasa repository is mainly a configurable shell for the wechange apps we use, which are pluggable components. Most of the actual code resides in "cosinnus-core". See `requirements_staging.txt` for a full list of internal apps. ecobasa is built on top of wechange and extends the models and apps with its own data and interface.
 
 Note: The wechange project is often refered to as "neww" in code and imports and the internal apps and python Objects are named "cosinnus" for historical reasons. 
 
-# Setup local development with Docker
+# How to set up local development for ecobasa
 
-    git submodule init
-    git submodule update
-    docker-compose up
+This will set up a local development envirenment, getting you ready to work on ecobasa and all its internal apps.
 
-# Setup local development manually
-
-This will set up a local development envirenment, getting you ready to work on wechange and all its internal apps.
-
-Note: Wechange still runs on Python 2.7.15 using Django 1.8, but we are in the process of upgrading to Python 3 and Django >= 2.0!
+Note: ecobasa still runs on Python 2.7.15 using Django 1.8, but we are in the process of upgrading to Python 3 and Django >= 2.0!
 
 
 ### Install PostgresSql 
 
 * Install PostgreSql for your system 
-* Create new psql database. Name it "wechange" or similar and note its password and user
+
+We use PostgreSQL: http://www.postgresql.org/
+For OSX we recommend: http://postgresapp.com/
+See http://od-eon.com/blogs/calvin/postgresql-cheat-sheet-beginners/
+
+* Create new psql database. Name it "ecobasa" or similar and note its password and user
   * you can use the root psql user, but we advise you to use a different one
+
+for a bit of setup info. Basically:
+
+  $ sudo su - postgres
+  $ createuser django -P # enter password, answer no to all questions
+  $ createdb -E utf8 -O django ecobasa -T template0
   
 ### Install Python, Pip and Virtualenv
  
@@ -37,21 +52,21 @@ Note: Wechange still runs on Python 2.7.15 using Django 1.8, but we are in the p
 
 ### Create a virtualenv and project folders
  
-* `virtualenv <your-path>/wechangeenv` - create your virtualenv once
-* `source <your-path>/wechangeenv/bin/activate` - activate your wechange virtualenv (do this in every new console when working on wechange)
-* `mkdir <your-project-folder>/wechange-source` - create the new wechange project location
-* `cd <your-project-folder>/wechange-source`
+* `virtualenv <your-path>/ecobasaenv` - create your virtualenv once
+* `source <your-path>/ecobasaenv/bin/activate` - activate your ecobasa virtualenv (do this in every new console when working on ecobasa)
+* `mkdir <your-project-folder>/ecobasa-source` - create the new ecobasa project location
+* `cd <your-project-folder>/ecobasa-source`
 
-### Get the cosinnus-devops and cosinnus source code
+### Get the ecobasa and cosinnus source code
 
-* `git clone git@github.com:wechange-eg/cosinnus-devops.git cosinnus-devops`
-* `./cosinnus-devops/local_install.sh | tee install.log`
+* `git clone git@github.com:ecobasa/ecobasa-3.0.git ecobasa`
+* `./ecobasa/local_install.sh | tee install.log`
 
 ### Set up the local wechange source and install all dependencies
 
-* `./cosinnus-devops/local_setup.sh | tee setup.log`
+* `./ecobasa/local_setup.sh | tee setup.log`
   * This sets up all of the cosinnus-projects into individual folders and runs "python setup.py develop". This means that the source of the cosinnus dependency is localized in the same directory, and you can edit the files in there as if it were a source directory.
-* `pip install -r ./cosinnus-devops/requirements_local.txt | tee reqs.log`
+* `pip install -r ecobasa/requirements_local.txt | tee reqs.log`
   
 **Notes:** 
 
@@ -61,11 +76,11 @@ Note: Wechange still runs on Python 2.7.15 using Django 1.8, but we are in the p
   * Especially Pillow and some other dependencies are known to cause trouble on some systems! 
   * if you see any compile errors, often time the solution is to install the offending dependency using a pip Wheel for your system.
 
-### Configure up your local wechange projects
+### Configure up your local ecobasa projects
 
-* `cd cosinnus-devops`
-* `cp devops/settings_local.py devops/settings.py`
-* Edit `devops/settings.py`:
+* `cd ecobasa`
+* `cp ecobasa/settings_local.py ecobasa/settings.py`
+* Edit `ecobasa/settings.py`:
   * replace the database settings in ``DATABASES['default']``: 
     * NAME, USER, PASSWORD: based on how you created your psql database
   * (this settings.py file is in .gitignore)
@@ -77,7 +92,7 @@ Note: Wechange still runs on Python 2.7.15 using Django 1.8, but we are in the p
   * enter the credentials for your local user
   * the username doesn't matter, you will log in using the email as credential
 
-### First-Time Wechange Setup
+### First-Time ecobasa Setup
 
 * navigate to `http://localhost:8000/admin` and log in with the email address and password you just created
   * navigate to `http://localhost:8000/admin/sites/site/1/` and change the default Site to 
@@ -87,7 +102,7 @@ Note: Wechange still runs on Python 2.7.15 using Django 1.8, but we are in the p
 
 ### First-Time Wagtail Setup
 
-We use Wagtail as CMS, and it will show up automatically as a root URL dashboard. You can skip this step configuring it, but all you will see on your root URL will be a blank page. Navigate to a page like `http://localhost:8000/projects/` to see the wechange-page.
+We use Wagtail as CMS, and it will show up automatically as a root URL dashboard. You can skip this step configuring it, but all you will see on your root URL will be a blank page. Navigate to a page like `http://localhost:8000/communities/` to see the ecobasa map.
 
 * navigate to `http://localhost:8000/cms-admin/pages/`
   * Delete the page "Welcome to your new Wagtail Site"
@@ -123,12 +138,30 @@ We use Wagtail as CMS, and it will show up automatically as a root URL dashboard
 
 # Git Structure
 
-Cosinnus-devops pulls Cosinnus-core and all cosinnus apps in directly from their Git repositories. See `requirements_staging.txt` for the repo locations and used branches.
+ecobasa pulls Cosinnus-core and all cosinnus apps in directly from their Git repositories. See `requirements_staging.txt` for the repo locations and used branches.
 
-# Testing Subportals
+# Deployment
 
-WECHANGE supports sub-portals that share the same database and can display the contents of other portals in the same "pool" in searches and map views. For this, create a new CosinnusPortal in the django admin, enter its portal name, site-id and settings in config_subportal.py.
+Deployment is automated with a comprehensive fab-file. Check ecobasa/fabfile.py!
 
-Run the new portal using `./manage.py --cosinnus-portal <portalname>`.
+When deploying using `fab staging`, the ecobasa and **all** the cosinnus projects will be deployed using their staging-branches! Same goes for production.
 
-For multiple subportals, duplicate the `wsgi_subportal.py` and `config_subportal.py`. 
+* To deploy to staging use:
+  * `fab staging deploy` for a full deploy, shutting down the server, creating a database snapshot, and pulling up an "Under Maintenance" blanket on all URLs.
+  * `fab staging hotdeploy` for a non-interruptive deploy. This is faster, creates no backups, and lets the site run as usual.
+    * Note: **hotdeploy** should never be used when new database migrations are being pushed!
+
+
+Set up the special group
+------------------------
+
+Edit your local settings.py for ECOBASA_SPECIAL_COSINNUS_GROUP to point to the
+primary key of the special group every pioneer will become a member of and
+whose blog posts are exposed. You will have to do that after setting up the
+group in the admin interface.
+
+
+We use LESS - CSS has to be compiled
+------------------------------------
+You can use grunt with node.js. Package.json will install all necessary dependencies, just type
+  $ npm install
