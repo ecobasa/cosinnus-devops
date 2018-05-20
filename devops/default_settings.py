@@ -36,13 +36,17 @@ WSGI_APPLICATION = 'devops.wsgi.application'
 """
 
 INTERNAL_INSTALLED_APPS = [
-   'devops',
-#    'ecobasa',
+    'devops',
+    'ecobasa',
 ]
 
 # we dynamically set the installed apps by which cosinnus-apps are found
 from cosinnus.default_settings import *
 INSTALLED_APPS = compile_installed_apps(internal_apps=INTERNAL_INSTALLED_APPS)
+
+INSTALLED_APPS += [
+
+]
 
 # templates setting is missing base directory. must come after cosinnus.default_settings import!
 TEMPLATES[0]['DIRS'] = [join(BASE_PATH, 'templates'),]

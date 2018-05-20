@@ -31,4 +31,6 @@ cd ..
 cd cosinnus-todo
 python setup.py develop
 cd ..
-
+cd ecobasa
+python setup.py develop
+cd ..
