@@ -42,6 +42,7 @@ INTERNAL_INSTALLED_APPS = [
 
 # we dynamically set the installed apps by which cosinnus-apps are found
 from cosinnus.default_settings import *
+
 INSTALLED_APPS = compile_installed_apps(internal_apps=INTERNAL_INSTALLED_APPS)
 
 INSTALLED_APPS += [
@@ -89,4 +90,3 @@ COSINNUS_ETHERPAD_ETHERCALC_BASE_URL = 'https://calc.yourserver.com'
 
 # PIWIK site id, if wished
 PIWIK_SITE_ID = None # 2
-

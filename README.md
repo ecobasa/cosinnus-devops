@@ -24,6 +24,9 @@ $ git submodule init
 $ git submodule update
 $ docker-compose up
 
+# Access django within docker
+
+docker-compose exec web /bin/bash  
 
 # How to set up local development for ecobasa
 
