@@ -31,3 +31,6 @@
 [submodule "cosinnus-todo"]
 	path = cosinnus-todo
 	url = git@github.com:wechange-eg/cosinnus-todo.git
+[submodule "ecobasa"]
+	path = ecobasa
+	url = git@github.com:ecobasa/ecobasa-3.0.git

@@ -37,6 +37,7 @@ WSGI_APPLICATION = 'devops.wsgi.application'
 
 INTERNAL_INSTALLED_APPS = [
    'devops',
+#    'ecobasa',
 ]
 
 # we dynamically set the installed apps by which cosinnus-apps are found
