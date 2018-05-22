@@ -100,15 +100,15 @@ We use Wagtail as CMS, and it will show up automatically as a root URL dashboard
 
 * navigate to `http://localhost:8000/cms-admin/pages/`
   * Delete the page "Welcome to your new Wagtail Site"
-  * create new Subpage on the root level
-    * Tab Inhalt (de): Title: enter "Root"
-    * Tab Förderung: Kurtitel (slug): enter "root"
-    * Tab Einstellungen: Portal: choose "Default Portal"
+  * create new Childpage on the root level
+    * Tab Content (de): Title: enter "Root"
+    * Tab Promote: Kurtitel (slug): enter "root"
+    * Tab Settings: Portal: choose "Default Portal"
     * below in the drop-up: Click "Publish"
   * Hover over the new "Root" page and click "Add new Subpage"
     * Choose "Start-Page: Modular"
-    * Tab Inhalt (de): Title: enter "Dashboard"
-    * Tab Förderung: Kurtitel (slug): enter "dashboard"
+    * Tab Content (de): Title: enter "Dashboard"
+    * Tab Promote: Kurtitel (slug): enter "dashboard"
     * below in the drop-up: Click "Publish"
   * In the left side menu, go to Settings > Sites
     * click "Add Site"

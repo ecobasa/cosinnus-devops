@@ -27,3 +27,9 @@ media/*
 static-collected/*
 mail_local/*
 _ignoreme_*
+<<<<<<< HEAD
+=======
+psql/
+mariadb/
+redis/
+>>>>>>> 4e3ce55832dbd1b87a080713c1ddf8a22bed61c2
